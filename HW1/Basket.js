@@ -21,7 +21,7 @@ var basket = (function(){
 	return {
 		addProduct : function(productID){
 			//implement
-		},
+		}, 
 		removeProduct : function(productID){
 			//implement
 		},
