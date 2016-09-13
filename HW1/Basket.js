@@ -4,18 +4,18 @@ var prodcuts = [{
     price: 5,
     inventory: 20
 }, {
-    name: "laptop",
-    price: 275,
-    inventory: 80
-}, {
-    name: "usbAdapter",
-    price: 3,
-    inventory: 50
-}, {
-    name: "keyboard",
-    price: 6,
-    inventory: 0
-}];
+        name: "laptop",
+        price: 275,
+        inventory: 80
+    }, {
+        name: "usbAdapter",
+        price: 3,
+        inventory: 50
+    }, {
+        name: "keyboard",
+        price: 6,
+        inventory: 0
+    }];
 
 function ProductLineItem(product) {
     this.name = product.name;
@@ -35,11 +35,11 @@ var basket = (function () {
 
     return {
         addProduct: function (productId) {
-            if (!(productId in prodcuts) || prodcuts[productId].inventory==0)
+            if (!(productId in prodcuts) || prodcuts[productId].inventory == 0)
                 return false;
 
 
-            var itemIndex = this.indexOf(prodcuts[productId].name);
+            var itemIndex = this.getIdOf(prodcuts[productId].name);
 
 
             if (itemIndex == -1)
@@ -56,7 +56,7 @@ var basket = (function () {
             if (!(productId in prodcuts))
                 return false;
 
-            var itemIndex = this.indexOf(prodcuts[productId].name);
+            var itemIndex = this.getIdOf(prodcuts[productId].name);
 
             if (itemIndex == -1)
                 return false;
@@ -73,7 +73,7 @@ var basket = (function () {
             if (!(productId in prodcuts))
                 return false;
 
-            var itemIndex = this.indexOf(prodcuts[productId].name);
+            var itemIndex = this.getIdOf(prodcuts[productId].name);
 
             if (itemIndex == -1)
                 return false;
@@ -95,7 +95,7 @@ var basket = (function () {
             return totalPrice;
         },
 
-        indexOf: function (productName) {
+        getIdOf: function (productName) {
 
             for (var i = 0; i < productLineItems.length; i++) {
                 if (productLineItems[i].name == productName)
@@ -111,7 +111,7 @@ var basket = (function () {
             }
         }/*,
         contains : function(productName){
-            return indexOf(productName)!=1;
+            return getIdOf(productName)!=1;
         } */
     }
 })();
@@ -124,4 +124,3 @@ console.log("Adding 0.. " + basket.addProduct(0));
 console.log("Adding 0.. " + basket.addProduct(0));
 console.log("Total price.. " + basket.getTotalPrice());
 basket.ShowAllInfo();
-
