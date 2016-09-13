@@ -35,7 +35,7 @@ var basket = (function () {
 
     return {
         addProduct: function (productId) {
-            if (!(productId in prodcuts))
+            if (!(productId in prodcuts) || prodcuts[productId].inventory==0)
                 return false;
 
 
