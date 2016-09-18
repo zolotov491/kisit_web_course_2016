@@ -8,28 +8,49 @@ var prodcuts = [{
 	inventory : 80
 }];
 
-function ProductLineItem(product) {
-	//implement
+var ProductLineItem = function(){
+	
 }
 
 ProductLineItem.prototype = {
-	//implement
+	
 };
 
 var basket = (function(){
-	//implement
+  var product_array = {};
 	return {
 		addProduct : function(productID){
-			//implement
+			if (productID>=0 && productID<=1 ){
+				if ((prodcuts[productID].name in product_array)){
+					if (product_array[prodcuts[productID].name]+1<=prodcuts[productID].inventory){
+					product_array[prodcuts[productID].name] += 1;	
+					}
+				} else
+		     product_array[prodcuts[productID].name] = 1;
+			}
+			return product_array;
 		},
 		removeProduct : function(productID){
-			//implement
+			if (productID>=0 && productID<=1 && prodcuts[productID].name in product_array){
+			delete product_array[prodcuts[productID].name];	
+			}
+			return product_array;
 		},
 		updateProductQuantity : function(productID, quantity) {
-			//implement
+			if ((productID>=0 && productID<=1) && (prodcuts[productID].name in product_array) && (quantity<=prodcuts[productID].inventory)){
+			product_array[prodcuts[productID].name] = quantity;
+			}
+        return product_array;		
 		},
 		getTotalPrice : function(){
-			//implement
+			var total = 0;
+		 for (key = 0; key<=1;key++){
+			 if (prodcuts[key].name in product_array)
+			 {
+			  total += product_array[prodcuts[key].name]*prodcuts[key].price;
+			 }
+		 }
+		 return total;
 		}
 	}
 })();
